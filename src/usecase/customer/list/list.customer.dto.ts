@@ -7,12 +7,10 @@ type Customer = {
         number: number;
         zip: string;
     };
-}
-
-export interface InputListCustomerDto {
-
 };
+
+export interface InputListCustomerDto {};
 
 export interface OutputListCustomerDto {
     customers: Customer[]
-}
+};
