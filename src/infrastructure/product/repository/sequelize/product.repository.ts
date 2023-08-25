@@ -29,14 +29,15 @@ export default class ProductRepository implements ProductRepositoryInterface {
     }
 
     async findById(id: string): Promise<Product> {
-        const result = await ProductModel.findOne({ where: { id: id } });
-
-        return new Product(
-            result.id,
-            result.name,
-            result.price
-        );
-
+        let productModel
+        try {
+            productModel = await ProductModel.findOne({ where: { id: id } });
+        } catch (error) {
+            console.log(error);
+            throw new Error("Product not found");
+        }
+        const product = new Product(productModel.id, productModel.name, productModel.price);
+        return product;
         // return result.toJSON();
     }
 
