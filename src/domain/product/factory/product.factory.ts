@@ -12,8 +12,7 @@ export default class ProductFactory {
             case "B":
                 return new ProductB(uuid(), name, price);
             default:
-                throw new Error("Product type not supported");
-                
+                throw new Error("Product type not supported");                
         }
     }
 }
